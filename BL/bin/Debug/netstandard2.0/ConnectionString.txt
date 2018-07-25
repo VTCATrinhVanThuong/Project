@@ -1,0 +1,1 @@
+server=localhost;user id=Tom;password=nde17065;port=3306;database=shopping;SslMode=None

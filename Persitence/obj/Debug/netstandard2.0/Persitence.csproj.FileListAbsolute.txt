@@ -1,0 +1,8 @@
+D:\New folder\Desktop\ProjectKy1\Project\Persitence\bin\Debug\netstandard2.0\Persitence.deps.json
+D:\New folder\Desktop\ProjectKy1\Project\Persitence\bin\Debug\netstandard2.0\Persitence.dll
+D:\New folder\Desktop\ProjectKy1\Project\Persitence\bin\Debug\netstandard2.0\Persitence.pdb
+D:\New folder\Desktop\ProjectKy1\Project\Persitence\obj\Debug\netstandard2.0\Persitence.csproj.CoreCompileInputs.cache
+D:\New folder\Desktop\ProjectKy1\Project\Persitence\obj\Debug\netstandard2.0\Persitence.AssemblyInfoInputs.cache
+D:\New folder\Desktop\ProjectKy1\Project\Persitence\obj\Debug\netstandard2.0\Persitence.AssemblyInfo.cs
+D:\New folder\Desktop\ProjectKy1\Project\Persitence\obj\Debug\netstandard2.0\Persitence.dll
+D:\New folder\Desktop\ProjectKy1\Project\Persitence\obj\Debug\netstandard2.0\Persitence.pdb
