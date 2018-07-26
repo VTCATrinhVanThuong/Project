@@ -4,40 +4,51 @@ using System.Text.RegularExpressions;
 using MySql.Data.MySqlClient;
 using Persistence;
 
-namespace DAL {
-    public class CustomerDAL {
+namespace DAL
+{
+    public class CustomerDAL
+    {
         private string query;
         private MySqlConnection connection;
         private MySqlDataReader reader;
-        public static Customer GetCustomer (MySqlDataReader reader) {
-            Customer customer = new Customer ();
-            customer.UserId = reader.GetInt32 ("UserId");
-            customer.UserName = reader.GetString ("Username");
-            customer.Phone = reader.GetInt32 ("Phone");
-            customer.Password = reader.GetString ("password");
-            customer.Address = reader.GetString ("Address");
+        public static Customer GetCustomer(MySqlDataReader reader)
+        {
+            Customer customer = new Customer();
+            customer.UserId = reader.GetInt32("UserID");
+            customer.UserName = reader.GetString("UserName");
+            customer.Phone = reader.GetInt32("UserPhone");
+            customer.Password = reader.GetString("UserPass");
+            customer.Address = reader.GetString("UserAddress");
             return customer;
         }
-        public Customer Login (string UserName, string password) {
-            string regexUser =  @"^[-.@_a-zA-Z0-9 ]+$";
-            string regexPassword = @"^[-.@_a-zA-Z0-9 ]+$";
-            if (Regex.IsMatch (UserName, regexUser) != true || UserName == "" || Regex.IsMatch (password, regexPassword) != true || password == "") {
+        public Customer Login(string UserName, string password)
+        {
+            Regex regex1 = new Regex("[a-zA-z0-9_]");
+            Regex regex2 = new Regex("[a-zA-Z0-9_]");
+            MatchCollection matchcollection1 = regex1.Matches(UserName);
+            MatchCollection matchcollection2 = regex2.Matches(password);
+            if ((matchcollection1.Count < UserName.Length) || (matchcollection2.Count < password.Length))
+            {
                 return null;
             }
-            query = $"Select * From Users  where Username = '{UserName}' and password = '{password}';";
+
+            query = @"Select * From Users  where UserName = '" + UserName + "' and UserPass = '" + password + "';";
             Customer customer = null;
-            using (connection = DBHelper.OpenConnection ()) {
-                MySqlCommand cmd = new MySqlCommand (query, connection);
-                using (reader = cmd.ExecuteReader ()) {
-                    if (reader.Read ()) {
-                        customer = new Customer ();
-                        customer = GetCustomer (reader);
-                    }
+            connection = DBHelper.OpenConnection();
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+            using (reader = cmd.ExecuteReader())
+            {
+                
+                if (reader.Read())
+                {
+                    // customer = new Customer();
+                    customer = GetCustomer(reader);
+                    // Console.Write(customer.UserName + customer.Password);
                 }
             }
+            connection.Close();
             return customer;
         }
     }
 
 }
-        

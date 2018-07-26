@@ -5,9 +5,9 @@ use shopping;
 create table Users(
 UserID int auto_increment   primary key,
 UserName varchar(55) not null,
-Pass varchar(55) not null,
-Phone int not null,
-Address varchar(55) 
+UserPass varchar(55) not null,
+UserPhone int not null,
+UserAddress varchar(55) 
 
 );
 
@@ -32,13 +32,13 @@ select * from Categorys;
 create table Items(
 ItemID varchar(30) not null primary key ,
 ItemName varchar(55) not null,
-Quantity int not null,
-Price decimal(20,0) not null,
+ItemQuantity int not null,
+ItemPrice decimal(20,0) not null,
 CategoryId int(11) not null,
 constraint fk_Items_category foreign key(CategoryID) references Categorys(CategoryID)
 );
 
-insert into Items(ItemID, ItemName, Quantity, Price, CategoryID)
+insert into Items(ItemID, ItemName,ItemQuantity,ItemPrice, CategoryID)
 value ('001g1', 'áo ống ren', 7, 40.000, 1),
  ('002g1', 'áo ba lỗ kèm lót - B70', 14, 52.000, 1),
  ('003g1', 'áo hai dây nữ đủ màu', 286, 19.000, 1),
@@ -148,6 +148,6 @@ Price decimal(20,0)not null,
 );
 
 
-insert into Users(Username, Pass, Phone, Address) values
-('thuong', '12345', 01665851446, 'Ha Noi');
-Select * From Users  where Username = 'thuong' and pass = '12345';
+insert into Users(Username,UserPass,UserPhone, UserAddress) values
+('Tom', 'nde17065', 01665851446, 'Ha Noi');
+Select * From Users  where Username = 'Tom' and Userpass = 'nde17065';

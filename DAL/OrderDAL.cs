@@ -34,8 +34,9 @@ namespace DAL
                      {order.ItemsList[i].item.ItemId},
                      {order.ItemsList[i].quantity},
                      {order.ItemsList[i].quantity * order.ItemsList[i].item.Price})";
-                     cmd.CommandText = $"update Items set Amount = Amount - {order.ItemsList[i].quantity} where ItemId = {order.ItemsList[i].item.Price};";
-
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = $"update Items set Amount = Amount - {order.ItemsList[i].quantity} where ItemId = {order.ItemsList[i].item.Price};";
+                    cmd.ExecuteNonQuery();
                 }
             }
             catch

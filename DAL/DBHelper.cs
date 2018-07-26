@@ -15,7 +15,7 @@ namespace DAL
             {
                 connection = new MySqlConnection
                 {
-                    ConnectionString = "server=localhost;user id=Tom;password=nde17065;port=3306;database=shopping;SslMode=None"
+                    ConnectionString = "server=localhost;user id=root;password=nde17065;port=3306;database=shopping;SslMode=None"
                 };
             }
             return connection;
