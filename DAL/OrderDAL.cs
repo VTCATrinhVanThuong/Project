@@ -63,7 +63,7 @@ namespace DAL
 
                     cmd.CommandText = @"insert into OrderDetail(OrderID,ItemId,Unit_price,Amount) value (" + order.Order_id + "," + item.ItemId + "," + item.ItemPrice + "," + item.ItemAmount + ") on duplicate key update Amount = Amount +" + item.ItemAmount + ";";
                     cmd.ExecuteNonQuery();
-                    cmd.CommandText = "update Items set ItemAmount = ItemAmount - " + item.ItemAmount + " ;";
+                    cmd.CommandText = "update Items set ItemAmount = ItemAmount - " + item.ItemAmount + " where ItemId = "+ item.ItemId + " ;";
                     cmd.ExecuteNonQuery();
                 }
                 trans.Commit();
