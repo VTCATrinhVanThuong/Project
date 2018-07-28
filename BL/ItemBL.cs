@@ -16,5 +16,9 @@ namespace BL {
             }
             return dal.getItemById (id);
         }
+        public List<Items> getItemByCategoryId(int CategoryId)
+        {
+            return dal.getItemByCategoryId(CategoryId);
+        }
     }
 }

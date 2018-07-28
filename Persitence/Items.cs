@@ -5,8 +5,11 @@ namespace Persistence
     {
         public int? ItemId{get; set;}
         public string ItemName{get; set;}
-        public int Price{get; set;}
-        public int Amount{get; set;}
+        public decimal ItemPrice{get; set;}
+        public int ItemAmount{get; set;}
+
+        public int CategoryID{get;set;}
+        // public Category category{get;set;}
         public override bool Equals(object obj){
             if(obj is Items){
                 return ((Items)obj).ItemId.Equals(ItemId);

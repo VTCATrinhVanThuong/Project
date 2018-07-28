@@ -16,7 +16,7 @@ namespace DAL
             Customer customer = new Customer();
             customer.UserId = reader.GetInt32("UserID");
             customer.UserName = reader.GetString("UserName");
-            customer.Phone = reader.GetInt32("UserPhone");
+            customer.Phone = reader.GetString("UserPhone");
             customer.Password = reader.GetString("UserPass");
             customer.Address = reader.GetString("UserAddress");
             return customer;

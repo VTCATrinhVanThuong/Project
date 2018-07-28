@@ -8,10 +8,14 @@ namespace BL
     public class OrderBL
     {
         private OrderDAL odl = new OrderDAL();
-        public bool CreateOrder(Orders order)
+        public bool AddOrder(Orders order)
         {
             bool result = odl.AddOrder(order);
             return result;
+        }
+        public  bool CreateOder(Orders order)
+        {
+            return odl.CreateOrder(order);
         }
     }
 }
