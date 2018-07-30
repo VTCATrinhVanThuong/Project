@@ -6114,11 +6114,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\New folder\\Desktop\\ProjectKy1\\Project\\DAL.Test\\DAL.Test.csproj",
+      "projectUniqueName": "d:\\New folder\\Desktop\\ProjectKy1\\Project\\DAL.Test\\DAL.Test.csproj",
       "projectName": "DAL.Test",
-      "projectPath": "D:\\New folder\\Desktop\\ProjectKy1\\Project\\DAL.Test\\DAL.Test.csproj",
+      "projectPath": "d:\\New folder\\Desktop\\ProjectKy1\\Project\\DAL.Test\\DAL.Test.csproj",
       "packagesPath": "C:\\Users\\Thuong\\.nuget\\packages\\",
-      "outputPath": "D:\\New folder\\Desktop\\ProjectKy1\\Project\\DAL.Test\\obj\\",
+      "outputPath": "d:\\New folder\\Desktop\\ProjectKy1\\Project\\DAL.Test\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -6135,8 +6135,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "D:\\New folder\\Desktop\\ProjectKy1\\Project\\DAL\\DAL.csproj": {
-              "projectPath": "D:\\New folder\\Desktop\\ProjectKy1\\Project\\DAL\\DAL.csproj"
+            "d:\\New folder\\Desktop\\ProjectKy1\\Project\\DAL\\DAL.csproj": {
+              "projectPath": "d:\\New folder\\Desktop\\ProjectKy1\\Project\\DAL\\DAL.csproj"
             }
           }
         }

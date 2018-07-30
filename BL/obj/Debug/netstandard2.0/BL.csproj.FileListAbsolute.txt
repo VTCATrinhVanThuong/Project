@@ -1,3 +1,4 @@
+D:\New folder\Desktop\ProjectKy1\Project\BL\bin\Debug\netstandard2.0\ConnectionString.txt
 D:\New folder\Desktop\ProjectKy1\Project\BL\bin\Debug\netstandard2.0\BL.deps.json
 D:\New folder\Desktop\ProjectKy1\Project\BL\bin\Debug\netstandard2.0\BL.dll
 D:\New folder\Desktop\ProjectKy1\Project\BL\bin\Debug\netstandard2.0\BL.pdb
@@ -10,5 +11,3 @@ D:\New folder\Desktop\ProjectKy1\Project\BL\obj\Debug\netstandard2.0\BL.Assembly
 D:\New folder\Desktop\ProjectKy1\Project\BL\obj\Debug\netstandard2.0\BL.AssemblyInfo.cs
 D:\New folder\Desktop\ProjectKy1\Project\BL\obj\Debug\netstandard2.0\BL.dll
 D:\New folder\Desktop\ProjectKy1\Project\BL\obj\Debug\netstandard2.0\BL.pdb
-D:\New folder\Desktop\ProjectKy1\Project\BL\obj\Debug\netstandard2.0\BL.csprojResolveAssemblyReference.cache
-D:\New folder\Desktop\ProjectKy1\Project\BL\bin\Debug\netstandard2.0\ConnectionString.txt

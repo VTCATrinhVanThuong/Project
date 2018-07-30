@@ -15,3 +15,4 @@ D:\New folder\Desktop\ProjectKy1\Project\DAL.Test\obj\Debug\netcoreapp2.0\DAL.Te
 D:\New folder\Desktop\ProjectKy1\Project\DAL.Test\obj\Debug\netcoreapp2.0\DAL.Test.AssemblyInfo.cs
 D:\New folder\Desktop\ProjectKy1\Project\DAL.Test\obj\Debug\netcoreapp2.0\DAL.Test.dll
 D:\New folder\Desktop\ProjectKy1\Project\DAL.Test\obj\Debug\netcoreapp2.0\DAL.Test.pdb
+D:\New folder\Desktop\ProjectKy1\Project\DAL.Test\bin\Debug\netcoreapp2.0\ConnectionString.txt

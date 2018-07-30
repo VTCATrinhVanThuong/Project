@@ -1,11 +1,12 @@
+D:\New folder\Desktop\ProjectKy1\Project\DAL\bin\Debug\netstandard2.0\ConnectionString.txt
 D:\New folder\Desktop\ProjectKy1\Project\DAL\bin\Debug\netstandard2.0\DAL.deps.json
 D:\New folder\Desktop\ProjectKy1\Project\DAL\bin\Debug\netstandard2.0\DAL.dll
 D:\New folder\Desktop\ProjectKy1\Project\DAL\bin\Debug\netstandard2.0\DAL.pdb
 D:\New folder\Desktop\ProjectKy1\Project\DAL\bin\Debug\netstandard2.0\Persitence.dll
 D:\New folder\Desktop\ProjectKy1\Project\DAL\bin\Debug\netstandard2.0\Persitence.pdb
+D:\New folder\Desktop\ProjectKy1\Project\DAL\obj\Debug\netstandard2.0\DAL.csprojResolveAssemblyReference.cache
 D:\New folder\Desktop\ProjectKy1\Project\DAL\obj\Debug\netstandard2.0\DAL.csproj.CoreCompileInputs.cache
 D:\New folder\Desktop\ProjectKy1\Project\DAL\obj\Debug\netstandard2.0\DAL.AssemblyInfoInputs.cache
 D:\New folder\Desktop\ProjectKy1\Project\DAL\obj\Debug\netstandard2.0\DAL.AssemblyInfo.cs
 D:\New folder\Desktop\ProjectKy1\Project\DAL\obj\Debug\netstandard2.0\DAL.dll
 D:\New folder\Desktop\ProjectKy1\Project\DAL\obj\Debug\netstandard2.0\DAL.pdb
-D:\New folder\Desktop\ProjectKy1\Project\DAL\bin\Debug\netstandard2.0\ConnectionString.txt

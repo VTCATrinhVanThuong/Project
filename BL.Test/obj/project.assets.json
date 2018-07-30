@@ -6133,11 +6133,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\New folder\\Desktop\\ProjectKy1\\Project\\BL.Test\\BL.Test.csproj",
+      "projectUniqueName": "d:\\New folder\\Desktop\\ProjectKy1\\Project\\BL.Test\\BL.Test.csproj",
       "projectName": "BL.Test",
-      "projectPath": "D:\\New folder\\Desktop\\ProjectKy1\\Project\\BL.Test\\BL.Test.csproj",
+      "projectPath": "d:\\New folder\\Desktop\\ProjectKy1\\Project\\BL.Test\\BL.Test.csproj",
       "packagesPath": "C:\\Users\\Thuong\\.nuget\\packages\\",
-      "outputPath": "D:\\New folder\\Desktop\\ProjectKy1\\Project\\BL.Test\\obj\\",
+      "outputPath": "d:\\New folder\\Desktop\\ProjectKy1\\Project\\BL.Test\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -6154,8 +6154,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "D:\\New folder\\Desktop\\ProjectKy1\\Project\\BL\\BL.csproj": {
-              "projectPath": "D:\\New folder\\Desktop\\ProjectKy1\\Project\\BL\\BL.csproj"
+            "d:\\New folder\\Desktop\\ProjectKy1\\Project\\BL\\BL.csproj": {
+              "projectPath": "d:\\New folder\\Desktop\\ProjectKy1\\Project\\BL\\BL.csproj"
             }
           }
         }

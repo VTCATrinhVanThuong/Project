@@ -9,9 +9,9 @@ namespace PL_Console
 {
     class UserInterface
     {
-        public static Customer c = new Customer();
-        public static Customer_Bl cbl = new Customer_Bl();
-        public static void LoginConsole()
+        public  Customer c = new Customer();
+        public  Customer_Bl cbl = new Customer_Bl();
+        public  void LoginConsole()
         {
             //  Order o = new Order();
             short imChoose;
@@ -22,26 +22,31 @@ namespace PL_Console
                 switch (imChoose)
                 {
                     case 1:
-                        Login(c);
+                        Login();
+                        break;
+                    case 2:
+                        Environment.Exit(0);
                         break;
                 }
             } while (imChoose != mainMenu.Length);
 
         }
 
-        public static void Login(Customer c)
+        public  void Login()
         {
+            Customer result = null;
             while (true)
             {
                 Console.Write("- Nhập Tên người dùng       : ");
                 c.UserName = Console.ReadLine();
                 Console.Write("- Nhập Mật Khẩu             : ");
                 c.Password = Validate.hidenpassword();
-                var result = cbl.login(c.UserName, c.Password);
+                result = cbl.login(c.UserName, c.Password);
                 if (result != null)
                 {
                     Console.WriteLine("Đăng nhập thành công!!!");
-                    OrderInterface.OrderMenu(result);
+                    OrderInterface od = new OrderInterface();
+                    od.OrderMenu(result);
                     break;
                 }
                 else
@@ -50,6 +55,8 @@ namespace PL_Console
                     continue;
                 }
             }
+            
+            // od.OrderMenu(result);
 
 
         }

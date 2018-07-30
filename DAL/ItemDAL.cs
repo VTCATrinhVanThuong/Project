@@ -44,7 +44,7 @@ namespace DAL {
             return list;
         }
         public Items getItemById (int id) {
-            string query = $"SELECT * FROM Items WHERE ItemId= '{id}';";
+            string query = $"SELECT * FROM Items WHERE ItemId = " + id + ";"; 
             Items item = null;
             using (connection = DBHelper.OpenConnection ()) {
                 MySqlCommand cmd = new MySqlCommand (query, connection);
