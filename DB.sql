@@ -10,7 +10,8 @@ UserPhone varchar(11) not null,
 UserAddress varchar(55) 
 
 );
-
+-- select Items.ItemId, ItemName, OrderDetail.Amount as ItemAmount, ItemPrice, CategoryId from OrderDetail inner join Items on OrderDetail.ItemId = Items.ItemId where OrderId = 6;
+ -- select OrderId from orderdetail order by OrderId desc limit 1 ;
 insert into Users(Username,UserPass,UserPhone, UserAddress) values
 ('Tom', 'nde17065', 01665851446, 'Ha Noi');
 create table Category(
@@ -136,6 +137,7 @@ OD_Status int,
 Constraint fk_Orders_Customer foreign key(UserID) references Users(UserID)
 );
 insert into orders(userid, od_status) value (1,2);
+-- select * from orderdetail;
 
 create table OrderDetail(
 ItemID int not null,
