@@ -9,6 +9,10 @@ namespace BL {
         public List<Items> GetItems () {
             return dal.GetItems ();
         }
+        public List<Items> GetItemsByOrderId()
+        {
+            return dal.GetItemsByOrderId();
+        }
         public Items getItemById (int id) {
             if(id ==0)
             {

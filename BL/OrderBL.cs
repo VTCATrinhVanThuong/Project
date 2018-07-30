@@ -13,9 +13,9 @@ namespace BL
             bool result = odl.AddOrder(order);
             return result;
         }
-        public  bool CreateOder(Orders order)
-        {
-            return odl.CreateOrder(order);
-        }
+        // public  bool CreateOder(Orders order)
+        // {
+        //     return odl.CreateOrder(order);
+        // }
     }
 }

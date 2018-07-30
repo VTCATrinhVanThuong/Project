@@ -90,95 +90,97 @@ namespace DAL
 
             return result;
         }
-        public bool CreateOrder(Orders order)
-        {
-            if (order == null || order.listItems == null || order.listItems.Count == 0)
-            {
-                return false;
-            }
-            bool result = true;
-            MySqlConnection connection = DbConfiguration.OpenConnection();
-            MySqlCommand cmd = connection.CreateCommand();
-            cmd.Connection = connection;
-            //Lock update all tables
-            cmd.CommandText = "lock tables Users write, Orders write, Items write, OrderDetail write;";
-            cmd.ExecuteNonQuery();
-            MySqlTransaction trans = connection.BeginTransaction();
-            cmd.Transaction = trans;
-            MySqlDataReader reader = null;
-            try
-            {
-                //Insert Order
-                cmd.CommandText = "insert into Orders(UserID, OD_Status) values (@customerId, @orderStatus);";
-                cmd.Parameters.Clear();
-                cmd.Parameters.AddWithValue("@customerId", order.customer.UserId);
-                cmd.Parameters.AddWithValue("@orderStatus", order.Status);
-                cmd.ExecuteNonQuery();
-                //get new Order_ID
-                // cmd.CommandText = "select order_id from Orders order by order_id desc limit 1;";
-                cmd.CommandText = "select LAST_INSERT_ID() as OrderID";
-                reader = cmd.ExecuteReader();
-                if (reader.Read())
-                {
-                    order.Order_id = reader.GetInt32("OrderID");
-                }
-                reader.Close();
 
-                //insert Order Details table
-                foreach (var item in order.listItems)
-                {
-                    if (item.ItemId == null || item.ItemAmount <= 0)
-                    {
-                        throw new Exception("Not Exists Item");
-                    }
-                    //get unit_price
-                    cmd.CommandText = "select ItemPrice from Items where ItemID=@itemId";
-                    cmd.Parameters.Clear();
-                    cmd.Parameters.AddWithValue("@itemId", item.ItemId);
-                    reader = cmd.ExecuteReader();
-                    if (!reader.Read())
-                    {
-                        throw new Exception("Not Exists Item");
-                    }
-                    item.ItemAmount = reader.GetInt16("ItemPrice"); //
-                    reader.Close();
+        
+        // public bool CreateOrder(Orders order)
+        // {
+        //     if (order == null || order.listItems == null || order.listItems.Count == 0)
+        //     {
+        //         return false;
+        //     }
+        //     bool result = true;
+        //     MySqlConnection connection = DbConfiguration.OpenConnection();
+        //     MySqlCommand cmd = connection.CreateCommand();
+        //     cmd.Connection = connection;
+        //     //Lock update all tables
+        //     cmd.CommandText = "lock tables Users write, Orders write, Items write, OrderDetail write;";
+        //     cmd.ExecuteNonQuery();
+        //     MySqlTransaction trans = connection.BeginTransaction();
+        //     cmd.Transaction = trans;
+        //     MySqlDataReader reader = null;
+        //     try
+        //     {
+        //         //Insert Order
+        //         cmd.CommandText = "insert into Orders(UserID, OD_Status) values (@customerId, @orderStatus);";
+        //         cmd.Parameters.Clear();
+        //         cmd.Parameters.AddWithValue("@customerId", order.customer.UserId);
+        //         cmd.Parameters.AddWithValue("@orderStatus", order.Status);
+        //         cmd.ExecuteNonQuery();
+        //         //get new Order_ID
+        //         // cmd.CommandText = "select order_id from Orders order by order_id desc limit 1;";
+        //         cmd.CommandText = "select LAST_INSERT_ID() as OrderID";
+        //         reader = cmd.ExecuteReader();
+        //         if (reader.Read())
+        //         {
+        //             order.Order_id = reader.GetInt32("OrderID");
+        //         }
+        //         reader.Close();
 
-                    //insert to Order Details
-                    cmd.CommandText = @"insert into OrderDetail(OrderID, ItemID, Unit_price,Amount ,OD_Status) value 
-                            (" + order.Order_id + ", " + item.ItemId + ", " + item.ItemPrice + ", " + item.ItemAmount + ", " + order.Status + ");";
-                    cmd.ExecuteNonQuery();
+        //         //insert Order Details table
+        //         foreach (var item in order.listItems)
+        //         {
+        //             if (item.ItemId == null || item.ItemAmount <= 0)
+        //             {
+        //                 throw new Exception("Not Exists Item");
+        //             }
+        //             //get unit_price
+        //             cmd.CommandText = "select ItemPrice from Items where ItemID=@itemId";
+        //             cmd.Parameters.Clear();
+        //             cmd.Parameters.AddWithValue("@itemId", item.ItemId);
+        //             reader = cmd.ExecuteReader();
+        //             if (!reader.Read())
+        //             {
+        //                 throw new Exception("Not Exists Item");
+        //             }
+        //             item.ItemAmount = reader.GetInt16("ItemPrice"); //
+        //             reader.Close();
 
-                    //update amount in Items
-                    cmd.CommandText = "update Items set ItemAmount=ItemAmount-@quantity where ItemID=" + item.ItemId + ";";
-                    cmd.Parameters.Clear();
-                    cmd.Parameters.AddWithValue("@quantity", item.ItemAmount);
-                    cmd.ExecuteNonQuery();
-                }
-                //commit transaction
-                trans.Commit();
-                result = true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                result = false;
-                try
-                {
-                    trans.Rollback();
-                }
-                catch
-                {
-                }
-            }
-            finally
-            {
-                //unlock all tables;
-                cmd.CommandText = "unlock tables;";
-                cmd.ExecuteNonQuery();
-                DBHelper.CloseConnection();
-            }
-            return result;
-        }
+        //             //insert to Order Details
+        //             cmd.CommandText = @"insert into OrderDetail(OrderID, ItemID, Unit_price,Amount ,OD_Status) value 
+        //                     (" + order.Order_id + ", " + item.ItemId + ", " + item.ItemPrice + ", " + item.ItemAmount + ", " + order.Status + ");";
+        //             cmd.ExecuteNonQuery();
+
+        //             //update amount in Items
+        //             cmd.CommandText = "update Items set ItemAmount=ItemAmount-@quantity where ItemID=" + item.ItemId + ";";
+        //             cmd.Parameters.Clear();
+        //             cmd.Parameters.AddWithValue("@quantity", item.ItemAmount);
+        //             cmd.ExecuteNonQuery();
+        //         }
+        //         //commit transaction
+        //         trans.Commit();
+        //         result = true;
+        //     }
+        //     catch (Exception ex)
+        //     {
+        //         Console.WriteLine(ex.Message);
+        //         result = false;
+        //         try
+        //         {
+        //             trans.Rollback();
+        //         }
+        //         catch
+        //         {
+        //         }
+        //     }
+        //     finally
+        //     {
+        //         //unlock all tables;
+        //         cmd.CommandText = "unlock tables;";
+        //         cmd.ExecuteNonQuery();
+        //         DBHelper.CloseConnection();
+        //     }
+        //     return result;
+        // }
     }
 
 }

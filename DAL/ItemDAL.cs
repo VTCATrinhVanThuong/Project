@@ -56,5 +56,38 @@ namespace DAL {
             }
             return item;
         }
+        public List<Items> GetItemsByOrderId()
+        {
+            if (connection == null)
+            {
+                connection = DBHelper.OpenConnection();
+            }
+            if (connection.State == System.Data.ConnectionState.Closed)
+            {
+                connection.Open();
+            }
+            int order_id = 0;
+            MySqlCommand command = new MySqlCommand();
+            command.Connection = connection;
+            command.CommandText = "select OrderId from orderdetail order by OrderId desc limit 1 ;";
+                    using (reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            order_id = reader.GetInt32("OrderId");
+                        }
+                    }
+            string query = $"select items.ItemID, ItemName, OrderDetail.Amount as ItemAmount, ItemPrice, CategoryId from OrderDetail inner join Items on OrderDetail.ItemId = Items.ItemId where OrderId = "+order_id+";";
+            List<Items> li = new List<Items>();
+            using (connection = DBHelper.OpenConnection ()) {
+                MySqlCommand cmd = new MySqlCommand (query, connection);
+                using (reader = cmd.ExecuteReader ()) {
+                    while (reader.Read ()) {
+                        li.Add(GetItem (reader));
+                    }
+                }
+            }
+            return li;
+        }
     }
 }
