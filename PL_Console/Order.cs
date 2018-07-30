@@ -9,9 +9,13 @@ namespace PL_Console
 {
     class OrderInterface
     {
-        public  Customer_Bl cbl = new Customer_Bl();
+        public static Item_BL itembl = new Item_BL();
+        public static List<Items> listitem = new List<Items>();
 
-        public  void OrderMenu(Customer c)
+
+        public Customer_Bl cbl = new Customer_Bl();
+
+        public void OrderMenu(Customer c)
         {
             //  Order o = new Order();
             short imChoose;
@@ -34,7 +38,7 @@ namespace PL_Console
         {
             OrderBL orderbl = new OrderBL();
             Orders o = new Orders();
-            // List<Items> lito = new List<Items>();
+            List<Items> lito = new List<Items>();
             CategoryBL cbl = new CategoryBL();
             List<Category> lc = new List<Category>();
             lc = cbl.GetCategory();
@@ -53,20 +57,21 @@ namespace PL_Console
             lit = ibl.getItemByCategoryId(choice);
             while (true)
             {
-                Console.WriteLine("___________________________________________________________________________");
-                Console.WriteLine("|============================== Sản Phẩm =================================|");
-                Console.WriteLine("|_________________________________________________________________________|");
+                Console.WriteLine("___________________________________________________________________________________________________________");
+                Console.WriteLine("|========================================== Sản Phẩm ======================================================|");
+                Console.WriteLine("|__________________________________________________________________________________________________________|");
+                Console.WriteLine("|ID  |                 Tên Sản Phẩm                        |        Giá Sản Phẩm      |    Số Lượng        |");
                 foreach (var item in lit)
                 {
-                    Console.WriteLine("|{0,-3} | {1,-43} | {2,-3}K VND| {3,-1} Amount", item.ItemId, item.ItemName, item.ItemPrice, item.ItemAmount);
-                    Console.WriteLine("|------------------------------------------------------------------------|");
+                    Console.WriteLine("|{0,-3} | {1,-51} | {2,21} VND| {3,-14} ", item.ItemId, item.ItemName, item.ItemPrice, item.ItemAmount);
+                    Console.WriteLine("|----------------------------------------------------------------------------------------------------------|");
 
                 }
                 Console.Write("1.Chọn ID sản phẩm bạn muốn mua :");
 
 
                 int product;
-                // lito = new List<Items>();
+
                 string choice1 = "";
                 Items io = null;
                 while (true)
@@ -104,7 +109,7 @@ namespace PL_Console
                 }
 
                 io.ItemAmount = quantity;
-                
+                lito.Add(io);
                 Console.WriteLine("Bạn có muốn tiếp tục thêm sản phẩm không? (C/K) ");
                 choice1 = Console.ReadLine().ToUpper();
                 if (choice1 == "C")
@@ -118,29 +123,51 @@ namespace PL_Console
                     break;
                 }
             }
-           
+
 
             Console.WriteLine("Bạn có muốn hoàn tất Order không(C/K) ? ");
-            string choice2 = Console.ReadLine().ToUpper();
+            char choice2 = Validate.InputToChar(Console.ReadLine().ToUpper());
+            Console.WriteLine(choice2);
             switch (choice2)
             {
-                case "C":
-                 Customer_Bl cbl1 = new Customer_Bl();
-                   
-                    // o.listItems = lito;
+                case 'C':
+
+                    Customer_Bl cbl1 = new Customer_Bl();
+
+                    o.listItems = lito;
+                    // Console.WriteLine(o.listItems.ToString()); 
                     o.customer = c;
                     o.Status = 1;
                     Console.WriteLine(" Order " + (orderbl.AddOrder(o) ? "Hoàn tất!" : "Không hoàn tất!"));
+                    listitem = o.listItems;
                     break;
-                case "K":
+                case 'K':
                     Console.WriteLine("Nhấn phím bất kỳ để hủy Order: ");
                     Console.ReadKey();
                     break;
 
             }
 
-           
-           
+
+
+            Console.WriteLine("____________________________________________________________________________________________________");
+            Console.WriteLine("|-----------------------------------------Đơn Hàng--------------------------------------------------|");
+            Console.WriteLine("| Tên Sản Phẩm                                   |   Số Lượng   | Giá Sản Phẩm      |  Thành Tiền   |");
+            Console.WriteLine("----------------------------------------------------------------------------------------------------");
+            decimal totalprice = 0;
+            // Console.WriteLine(o.listItems.Count);
+            foreach (var item in o.listItems)
+            {
+                decimal a = 0;
+                a = item.ItemPrice * item.ItemAmount;
+                totalprice += a;
+
+                Console.WriteLine("|{0,-48}|{1,-14}|{2,15} VND|{3,11} VND|", item.ItemName, item.ItemAmount, item.ItemPrice, a);
+            }
+            Console.WriteLine("__________________________________________________________________________________________________");
+            Console.WriteLine("Tổng tiền:                                                                                {0} VND", totalprice);
+
+
 
 
 

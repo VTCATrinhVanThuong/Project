@@ -85,7 +85,7 @@ namespace PL_Console
         {
             Regex regex = new Regex("[a-zA-Z]");
             MatchCollection matchCollectionstr = regex.Matches(a);
-            while ((matchCollectionstr.Count < a.Length) || (a != "Y" && a != "N" && a != "y" && a != "n") || (a.Length > 1))
+            while ((matchCollectionstr.Count < a.Length) || (a.Length > 1))
             {
                 Console.Write("Wrong value, please re-enter: ");
                 a = Console.ReadLine();

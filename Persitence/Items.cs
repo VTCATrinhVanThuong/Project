@@ -3,7 +3,7 @@ namespace Persistence
 {
     public class Items
     {
-        public int? ItemId{get; set;}
+        public int ItemId{get; set;}
         public string ItemName{get; set;}
         public decimal ItemPrice{get; set;}
         public int ItemAmount{get; set;}
