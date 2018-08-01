@@ -19,16 +19,21 @@ namespace PL_Console
         {
             //  Order o = new Order();
             short imChoose;
-            string[] mainMenu1 = { "Mua Hàng", "Quay lại menu chính " };
+            string[] mainMenu1 = { "Mua Hàng", "Đăng Xuất " };
             do
             {
                 imChoose = Validate.Menu_Interface("Menu Hàng ", mainMenu1);
                 switch (imChoose)
                 {
                     case 1:
+                        Console.Clear();
                         Order(c);
                         break;
-
+                    case 2:
+                        Console.Clear();
+                        return;
+                    default:
+                        continue;
                 }
             } while (imChoose != mainMenu1.Length);
 
@@ -43,14 +48,18 @@ namespace PL_Console
             CategoryBL cbl = new CategoryBL();
             List<Category> lc = new List<Category>();
             lc = cbl.GetCategory();
+            Console.WriteLine("___________________________________________");
+            Console.WriteLine("|----------- Danh Mục Sản Phẩm -----------|");
+            Console.WriteLine("|-----------------------------------------|");
             foreach (var item in lc)
             {
-                Console.WriteLine(item.CategoryID + " | " + item.CategoryName);
+                Console.WriteLine("|" + item.CategoryID + " | " + item.CategoryName);
             }
             int choice;
             do
             {
                 Console.Write("-chọn: ");
+
                 choice = Convert.ToInt32(Console.ReadLine());
             } while ((choice < 1) || (choice > lc.Count));
             Item_BL ibl = new Item_BL();
@@ -58,6 +67,7 @@ namespace PL_Console
             lit = ibl.getItemByCategoryId(choice);
             while (true)
             {
+                Console.Clear();
                 Console.WriteLine("___________________________________________________________________________________________________________");
                 Console.WriteLine("|========================================== Sản Phẩm ======================================================|");
                 Console.WriteLine("|__________________________________________________________________________________________________________|");
@@ -136,8 +146,10 @@ namespace PL_Console
                     switch (choice1)
                     {
                         case "C":
+                            Console.Clear();
                             break;
                         case "K":
+                            Console.Clear();
                             break;
                         default:
                             continue;
@@ -146,11 +158,13 @@ namespace PL_Console
                 }
                 if (choice1 == "C")
                 {
+                    Console.Clear();
 
                     continue;
                 }
                 else if (choice1 == "K")
                 {
+                    Console.Clear();
 
                     break;
                 }
@@ -181,8 +195,10 @@ namespace PL_Console
                 switch (choice1)
                 {
                     case "C":
+
                         break;
                     case "K":
+                        Console.Clear();
                         return;
                     default:
                         continue;
@@ -209,7 +225,7 @@ namespace PL_Console
                     else if (cusmoney < totalprice)
                     {
                         Console.Write("Số tiền trả không đủ, mời nhập lại(đồng): ");
-                   continue;
+                        continue;
                     }
                 }
                 catch (System.Exception)
@@ -232,7 +248,7 @@ namespace PL_Console
             // listitem = o.listItems;
             Console.ReadKey();
 
-
+            Console.Clear();
             // List<Items> newlit = ibl.GetItemsByOrderId();
 
 

@@ -12,6 +12,7 @@ namespace PL_Console
         static void Main(string[] args)
         {
             UserInterface ui = new UserInterface();
+            Console.Clear();
             ui.LoginConsole();
         }
         
